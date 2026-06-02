@@ -13,8 +13,8 @@ export function FloatingContacts() {
 
   const items = [
     { href: "https://instagram.com", label: "Instagram", icon: Instagram, bg: "bg-gradient-to-br from-[#feda75] via-[#d62976] to-[#4f5bd5]" },
-    { href: "tel:+910000000000", label: "Call", icon: Phone, bg: "bg-[#1e88e5]" },
-    { href: "https://wa.me/910000000000", label: "WhatsApp", icon: MessageCircle, bg: "bg-[#25d366]" },
+    { href: "tel:+7301010197", label: "Call", icon: Phone, bg: "bg-[#1e88e5]" },
+    { href: "https://wa.me/7301010197", label: "WhatsApp", icon: MessageCircle, bg: "bg-[#25d366]" },
   ];
 
   return (
