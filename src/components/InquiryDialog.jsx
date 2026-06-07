@@ -23,7 +23,7 @@ const schema = z.object({
 //   open: boolean;
 //   onOpenChange: (o: boolean) => void;
 //   product?: Product;
-// }
+// 
 
 export function InquiryDialog({ open, onOpenChange, product }) {
   const [submitting, setSubmitting] = useState(false);
@@ -55,7 +55,7 @@ export function InquiryDialog({ open, onOpenChange, product }) {
         <DialogHeader>
           <DialogTitle className="text-2xl sm:text-3xl font-display">Request Product Details</DialogTitle>
           <DialogDescription>
-            {product?.name ? `Inquiring about: ${product.name}. ` : ""}Share your requirements — our team responds within 24 hours.
+            {product?.name ? `Inquiring about: ${product.name}. ` : ""}Share your requirements — our team responds within 24 hours.    
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={onSubmit} className="grid gap-4 mt-2">

@@ -9,6 +9,7 @@ import ProductDetail from "./pages/ProductDetail";
 import NotFound from "./pages/NotFound";
 import { FloatingContacts } from "./components/FloatingContacts";
 import { Toaster } from "./components/ui/sonner";
+import Marbel from "./pages/Marbel";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/terracotta" element={<Terracotta />} />
         <Route path="/wooden" element={<Wooden />} />
         <Route path="/papier-mache" element={<PapierMache />} />
+        <Route path="/marbel" element={<Marbel />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -9,6 +9,29 @@ import terracotta from "@/assets/cat-terracotta.jpg";
 import papier from "@/assets/cat-papier.jpg";
 import wooden from "@/assets/cat-wooden.jpg";
 import mapScaled from "../assets/map-scaled.webp"
+import marbel from "../assets/marbel.webp"
+
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay";
+
+
+import expo1 from "../assets/expo/expo1.jpg";
+import expo2 from "../assets/expo/expo2.jpg";
+import expo3 from "../assets/expo/expo3.jpg";
+import expo4 from "../assets/expo/expo4.jpg";
+import expo5 from "../assets/expo/expo5.jpg";
+import expo6 from "../assets/expo/expo6.jpg";
+import expo7 from "../assets/expo/expo7.jpg";
+import expo8 from "../assets/expo/expo8.jpg";
+import expo9 from "../assets/expo/expo9.jpg";
+import { TradeShows } from "../components/TradeShow";
 
 
 export default function Home() {
@@ -42,7 +65,19 @@ export default function Home() {
     }
   ];
 
-  
+  const expoImages = [
+    expo1,
+    expo2,
+    expo3,
+    expo4,
+    expo5,
+    expo6,
+    expo7,
+    expo8,
+    expo9,
+  ];
+
+
   useEffect(() => { document.title = "Home | Vishal Timbers"; }, []);
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -61,9 +96,9 @@ export default function Home() {
                 Beautifully handcrafted luxury décor — where heritage craftsmanship meets modern aesthetics, exported worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Button asChild className="text-white rounded-none px-6 sm:px-8 py-6 text-sm tracking-wider uppercase" style={{ background: "var(--brand-clay)" }}>
+                {/* <Button asChild className="text-white rounded-none px-6 sm:px-8 py-6 text-sm tracking-wider uppercase" style={{ background: "var(--brand-clay)" }}>
                   <Link to="/terracotta">Explore Collections</Link>
-                </Button>
+                </Button> */}
                 <Button asChild variant="outline" className="rounded-none px-6 sm:px-8 py-6 text-sm tracking-wider uppercase">
                   <Link to="/contact">Get in Touch</Link>
                 </Button>
@@ -122,9 +157,9 @@ export default function Home() {
                   celebrate conscious living.
                 </p>
               </div>
-              <button className="mt-10 px-8 py-4 border border-black hover:bg-black hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest">
+              {/* <button className="mt-10 px-8 py-4 border border-black hover:bg-black hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest">
                 Learn More
-              </button>
+              </button> */}
             </div>
           </div>
         </section>
@@ -136,21 +171,22 @@ export default function Home() {
                 <h2 className="font-display text-4xl md:text-6xl mb-4">The Collections</h2>
                 <p className="text-muted-foreground">Curated objects for the modern, mindful home.</p>
               </div>
-              <Link to="/all" className="text-sm font-bold uppercase tracking-widest border-b-2 border-brand-clay pb-1">
+              {/* <Link to="/all" className="text-sm font-bold uppercase tracking-widest border-b-2 border-brand-clay pb-1">
                 View All Works
-              </Link>
+              </Link> */}
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
               {[
                 { img: terracotta, name: "Terra Cotta", to: "/terracotta", desc: "Elegant warm tones of earthen pottery, handcrafted from natural clay." },
                 { img: papier, name: "Papier Mâché", to: "/papier-mache", desc: "Repurposed and recycled paper, sculpted into modern aesthetic forms." },
                 { img: wooden, name: "Wooden", to: "/wooden", desc: "Handcrafted wooden bowls, trays and decor in teak and sheesham." },
+                { img: marbel, name: "marbel", to: "/marbel", desc: "Timeless marble craftsmanship featuring luxurious textures and elegant natural stone finishes." },
               ].map((c, index) => (
                 <Link
                   key={c.name}
                   to={c.to}
-                  className={`group relative ${index === 1 ? 'lg:-mt-10' : ''}`} // Creates a staggered, dynamic look
+                  className={`group relative ${index % 2 !== 0 ? 'lg:-mt-10' : ''}`}
                 >
                   <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-[#f3f3f3] shadow-sm group-hover:shadow-2xl transition-all duration-500">
                     <img
@@ -166,12 +202,12 @@ export default function Home() {
                   <div className="px-2">
                     <h3 className="font-display text-3xl mb-3 group-hover:text-brand-clay transition-colors">{c.name}</h3>
                     <p className="text-muted-foreground leading-relaxed mb-4 line-clamp-2 italic">
-                      "{c.desc}" 
+                      "{c.desc}"
                     </p>
                     <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest overflow-hidden">
                       <span className="h-[1px] w-8 bg-brand-clay group-hover:w-12 transition-all duration-300"></span>
                       Explore Collection
-                    </div>    
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -201,49 +237,39 @@ export default function Home() {
             </div>
 
             {/* Creative Grid / Gallery */}
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 h-[600px] md:h-[700px]">
+            <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 2500,
+                }),
+              ]}
+              opts={{
+                align: "start",
+                loop: true, // repeat infinitely
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {expoImages.map((image, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="basis-full sm:basis-1/2 lg:basis-1/3"
+                  >
+                    <div className="p-2">
+                      <img
+                        src={image}
+                        alt={`Expo ${index + 1}`}
+                        className="w-full h-80 object-cover rounded-xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
 
-              {/* Main Feature Image (Wide) */}
-              <div className="md:col-span-2 lg:col-span-3 overflow-hidden rounded-lg group relative">
-                <img
-                  src={process}
-                  alt="Main Booth Display"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-                <div className="absolute bottom-6 left-6 text-white">
-                  <p className="text-xs uppercase tracking-widest font-bold">IHGF Delhi Fair</p>
-                </div>
-              </div>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
 
-              {/* Secondary Vertical Image */}
-              <div className="md:col-span-2 lg:col-span-1 overflow-hidden rounded-lg group">
-                <img
-                  src={process}
-                  alt="Artisan Display Detail"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-
-              {/* Two Stacked Images */}
-              <div className="md:col-span-2 lg:col-span-2 grid grid-rows-2 gap-4">
-                <div className="overflow-hidden rounded-lg group">
-                  <img
-                    src={process}
-                    alt="Client Interaction"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-lg group">
-                  <img
-                    src={process}
-                    alt="Product Shelving"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-              </div>
-
-            </div>
 
             {/* Optional: Navigation / Call to Action */}
             <div className="mt-12 flex justify-center">
@@ -306,7 +332,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <TradeShows />
       </main>
+
       <SiteFooter />
     </div>
   );

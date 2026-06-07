@@ -6,6 +6,7 @@ const links = [
   { to: "/about", label: "About Us" },
   { to: "/terracotta", label: "Terra-Cotta" },
   { to: "/wooden", label: "Wooden" },
+  { to: "/marbel", label: "Marbel" },
   { to: "/papier-mache", label: "Papier-Mache" },
   { to: "/contact", label: "Contact" },
 ];
