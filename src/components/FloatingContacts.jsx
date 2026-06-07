@@ -12,7 +12,7 @@ export function FloatingContacts() {
   }, []);
 
   const items = [
-    { href: "https://instagram.com", label: "Instagram", icon: Instagram, bg: "bg-gradient-to-br from-[#feda75] via-[#d62976] to-[#4f5bd5]" },
+    { href: "https://www.instagram.com/vishal_timbers_11/", label: "Instagram", icon: Instagram, bg: "bg-gradient-to-br from-[#feda75] via-[#d62976] to-[#4f5bd5]" },
     { href: "tel:+7301010197", label: "Call", icon: Phone, bg: "bg-[#1e88e5]" },
     { href: "https://wa.me/7301010197", label: "WhatsApp", icon: MessageCircle, bg: "bg-[#25d366]" },
   ];
